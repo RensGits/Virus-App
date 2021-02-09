@@ -1,0 +1,2513 @@
+import 'package:flutter/material.dart';
+import 'package:assets_audio_player/assets_audio_player.dart';
+import 'package:admob_flutter/admob_flutter.dart';
+import 'services/admob_service.dart';
+
+void main() => runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Home(),
+    ));
+
+class Home extends StatefulWidget {
+  @override
+  _HomeState createState() => _HomeState();
+}
+
+class _HomeState extends State<Home> {
+  final ams = AdMobService();
+  PageController pageController = PageController(initialPage: 0);
+  bool _play = false;
+
+  @override
+  void initState() {
+    super.initState();
+    Admob.initialize();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: false,
+        backgroundColor: Colors.transparent,
+        shadowColor: Colors.transparent,
+      ),
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.white,
+        elevation: 0,
+        child: new Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            IconButton(
+              icon: Image.asset('images/backiconsmall.png'),
+              onPressed: () {
+                pageController.animateToPage(0,
+                    duration: Duration(milliseconds: 2000),
+                    curve: Curves.easeOut);
+              },
+            ),
+            AudioWidget.assets(
+              loopMode: LoopMode.single,
+              path: "assets/audios/ruimteboi.mp3",
+              play: _play,
+              child: IconButton(
+                  icon: Image.asset(
+                    _play
+                        ? "images/speakericon.png"
+                        : "images/speakericonoff.png",
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      _play = !_play;
+                    });
+                  }),
+
+              //onPositionChanged
+            ),
+            IconButton(
+              icon: Image.asset('images/compareiconsmall.png'),
+              onPressed: () {
+                pageController.animateToPage(9,
+                    duration: Duration(milliseconds: 2000),
+                    curve: Curves.easeOut);
+              },
+            ),
+          ],
+        ),
+      ),
+      extendBodyBehindAppBar: true,
+      body: PageView(
+        controller: pageController,
+        children: <Widget>[
+          ///
+          /// ADENO VIRUS
+          ///
+
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  //Virus Name, Family Name, Image
+                  height: MediaQuery.of(context).size.height * 0.59,
+                  color: Colors.white,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Spacer(flex: 30),
+                        Flexible(
+                          flex: 10,
+                          child: Text('Adenovirus',
+                              style: TextStyle(
+                                  fontFamily: 'RobotoB',
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  decoration: TextDecoration.none)),
+                        ),
+                        Spacer(flex: 3),
+                        Flexible(
+                          flex: 10,
+                          child: Text(
+                            'Family: Adenoviridea',
+                            style: TextStyle(
+                                fontFamily: 'merriweatherLI',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none),
+                          ),
+                        ),
+                        Spacer(flex: 18),
+                        Flexible(
+                          flex: 50,
+                          child: Image.asset(
+                            'images/Adeno.png',
+                            height: 170,
+                            width: 170,
+                          ),
+                        ),
+                        Spacer(flex: 10),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //Virus snippet info
+                  color: Colors.white,
+                  height: MediaQuery.of(context).size.height * 0.41,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Text('TRANSMISSION:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('''
+
+droplet contact, 
+fecal-oral, 
+sexual contact, 
+direct eye contact
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('DISEASES:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text(''' 
+
+upper respiratory tract infection
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1))
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //complete info page
+                  color: Color(0xFFDDD9D3),
+                  height: MediaQuery.of(context).size.height * 2.7,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: <Widget>[
+                        ///
+                        ///TAXONOMY///
+                        ///
+                        Spacer(flex: 3),
+                        Container(
+                            child: Image.asset(
+                          'images/texticon.png',
+                          height: MediaQuery.of(context).size.width * 0.15,
+                        )),
+
+                        Spacer(flex: 3),
+                        Text(
+                          'TAXONOMY',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Adenovirus is the popular name of the entire family Adenoviridea, a family of viruses containing five genera that holds over 50 species able to cause a range of different illnesses in children and people with a weakened immune system. The name adeno derives from their initial isolation from human adenoids i.e. tonsils.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 2),
+
+                        ///
+                        /// TAX IMAGE ///
+                        ///
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: InteractiveViewer(
+                              child: Image.asset('images/Adenotax.png')),
+                        ),
+                        Spacer(flex: 2),
+
+                        Text(
+                          'STRUCTURE',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Adenoviruses are the largest nonenveloped viruses. Their main structure is an icosahedral capsid that contains the double stranded DNA. Each penton base carries a so called fiber that aids the virus in attaching to its target cell.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        ///ADENO INSIDE IMAGE
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: Image.asset('images/AdenoInside.png'),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        /// INFECTION & TRANSMISSION
+                        ///
+                        Text(
+                          'INFECTION & TRANSMISSION',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'The most common route of transmission is through respiratory droplets that are taken up through the mouth, nose, or eyes of the new host. Other ways of transmitting the virus include oral contact with faecal matter or through sexual intercourse.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 4),
+
+                        ///
+                        /// DISEASES
+                        ///
+
+                        Text(
+                          'DISEASES',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Most infections with adenoviruses result in infections of the upper respiratory tract and/or fever. These infections often result in conjunctivitis (pink-eye), tonsillitis (inflammation of the tonsils), croup (a respiratory infection that is characterised by swelling of the trachea), pneumonia (inflammation of the air sacs) and ear infection.  Outbreaks of adenovirus-associated respiratory disease have been more common in the late winter, spring, and early summer, but can occur throughout the year.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+                        Container(
+                            child: Image.asset(
+                          'images/texticon.png',
+                          height: MediaQuery.of(context).size.width * 0.15,
+                        )),
+                        Spacer(flex: 3),
+                        AdmobBanner(
+                          adUnitId: ams.getBannerAdId(),
+                          adSize: AdmobBannerSize.FULL_BANNER,
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          ///
+          /// HEPITITUS C VIRUS
+          ///
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  //Virus Name, Family Name, Image
+                  height: MediaQuery.of(context).size.height * 0.59,
+                  color: Colors.white,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Spacer(flex: 30),
+                        Flexible(
+                          flex: 10,
+                          child: Text('Hepatitis C virus',
+                              style: TextStyle(
+                                  fontFamily: 'RobotoB',
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  decoration: TextDecoration.none)),
+                        ),
+                        Spacer(flex: 3),
+                        Flexible(
+                          flex: 10,
+                          child: Text(
+                            'Family: Flaviviridea',
+                            style: TextStyle(
+                                fontFamily: 'merriweatherLI',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none),
+                          ),
+                        ),
+                        Spacer(flex: 18),
+                        Flexible(
+                          flex: 50,
+                          child: Image.asset(
+                            'images/HepC.png',
+                            height: 170,
+                            width: 170,
+                          ),
+                        ),
+                        Spacer(flex: 10),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //Virus snippet info
+                  color: Colors.white,
+                  height: MediaQuery.of(context).size.height * 0.41,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Text('TRANSMISSION:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('''
+
+Blood,
+Sexual contact
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('DISEASES:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text(''' 
+
+hepatitis C,
+lymphoma,
+hepatocellular carcinoma
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1))
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //complete info page
+                  color: Color(0xFFDDD9D3),
+                  height: MediaQuery.of(context).size.height * 2.9,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: <Widget>[
+                        Spacer(flex: 3),
+                        Container(
+                            child: Image.asset(
+                          'images/texticon.png',
+                          height: MediaQuery.of(context).size.width * 0.15,
+                        )),
+
+                        ///
+                        ///TAXONOMY///
+                        ///
+                        Spacer(flex: 3),
+                        Text(
+                          'TAXONOMY',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Hepatitis C belongs to the genus of Hepacivirus  within the Flaviviridae family. Flaviviridae is divided into four genera; Flavivirus, Pegivirus, Pestvirus and Hepacivirus. The name Flaviviridae comes from the Latin word flavus which means yellow and refers to the condition of jaundice caused by the yellow fever virus that is part of the family. Other well-known species within the family are the West Nile virus, Dengue virus and Zika virus. Hepacivirus contains 14 species (Hepatitis A – N and Hepatitis P).',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 2),
+
+                        ///
+                        /// TAX IMAGE ///
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            child: Image.asset('images/Hepctax.png'),
+                          ),
+                        ),
+                        Spacer(flex: 2),
+
+                        ///
+                        /// Structure
+                        ///
+                        Text(
+                          'STRUCTURE',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'The Hepatitis C virus has a lipid membrane envelope that is 55 to 65 nm in diameter. The glycoproteins E1 and E2 are embedded in the membrane, here coloured as white and red respectively. The glycoproteins function as chemical hooks that bind to the target cell. The icosahedral capsid is 33 to 40 nm in diameter and holds the single strand RNA that is used to infect the host cell.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        /// STRUCTURE IMAGE ///
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: Image.asset('images/HepCInside.png'),
+                          ),
+                        ),
+
+                        Spacer(flex: 4),
+
+                        ///
+                        /// INFECTION & TRANSMISSION
+                        ///
+                        Text(
+                          'INFECTION & TRANSMISSION',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            ' Hepatitis C virus is usually transmitted through blood contact, but also has a small change of transmitting through sexual intercourse or through vertical transmission (from mother to child within the womb). Because of this, intravenous drug users, recipients of blood transfusion or dialysis are the biggest risk groups.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 4),
+
+                        ///
+                        /// DISEASES
+                        ///
+
+                        Text(
+                          'DISEASES',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'The Hepatitis C virus can cause Hepatitis C, Hepatocellular carcinoma and Lymphoma. Hepatitis C is characterised by inflammation in the liver. Early infection usually shows no or little symptoms however (dark urine, abdominal pain, and yellow tinged skin can occasionally occur),  over many years it can cause liver disease (damage to the liver)  or cirrhosis, a condition where normal liver tissue gets replaced by scar tissue. Hepatocellular carcinoma or short HCC is a type of liver cancer that is caused by chronic inflammation of the liver that can be caused by the Hepatitis C virus. Lymphoma is a type of cancer that develops from white blood cells. Symptoms may include enlarged lymph nodes, fever, drenching sweats, weight loss, itching, and constantly feeling of tiredness.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+                        Container(
+                            child: Image.asset(
+                          'images/texticon.png',
+                          height: MediaQuery.of(context).size.width * 0.15,
+                        )),
+
+                        Spacer(flex: 3),
+                        AdmobBanner(
+                          adUnitId: ams.getBannerAdId(),
+                          adSize: AdmobBannerSize.FULL_BANNER,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          ///
+          /// HEPATITUS B VIRUS
+          ///
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  //Virus Name, Family Name, Image
+                  height: MediaQuery.of(context).size.height * 0.59,
+                  color: Colors.white,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Spacer(flex: 30),
+                        Flexible(
+                          flex: 10,
+                          child: Text('Hepatitis B virus',
+                              style: TextStyle(
+                                  fontFamily: 'RobotoB',
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  decoration: TextDecoration.none)),
+                        ),
+                        Spacer(flex: 3),
+                        Flexible(
+                          flex: 10,
+                          child: Text(
+                            'Family: Flaviviridea',
+                            style: TextStyle(
+                                fontFamily: 'merriweatherLI',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none),
+                          ),
+                        ),
+                        Spacer(flex: 18),
+                        Flexible(
+                          flex: 50,
+                          child: Image.asset(
+                            'images/HepB.png',
+                            height: 170,
+                            width: 170,
+                          ),
+                        ),
+                        Spacer(flex: 10),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //Virus snippet info
+                  color: Colors.white,
+                  height: MediaQuery.of(context).size.height * 0.41,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Text('TRANSMISSION:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('''
+
+Blood,
+Sexual contact
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('DISEASES:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text(''' 
+
+hepatitis B
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1))
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //complete info page
+                  color: Color(0xFFDDD9D3),
+                  height: MediaQuery.of(context).size.height * 3,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: <Widget>[
+                        Spacer(flex: 3),
+                        Container(
+                            child: Image.asset(
+                          'images/texticon.png',
+                          height: MediaQuery.of(context).size.width * 0.15,
+                        )),
+
+                        Spacer(flex: 3),
+
+                        ///
+                        ///TAXONOMY///
+                        ///
+
+                        Text(
+                          'TAXONOMY',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Hepatitis B belongs to the genus of Hepacivirus within the Flaviviridae family. Flaviviridae are a family of positive, single-stranded, enveloped RNA viruses, divided into four genera; Flavivirus, Pegivirus, Pestvirus and Hepacivirus. The name Flaviviridae comes from the Latin word flavus meaning yellow and refers to the condition of jaundice caused by the yellow fever virus that is part of the family. Other well-known species within the family are the West Nile virus, Dengue virus and Zika virus.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        /// TAX IMAGE ///
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            child: Image.asset('images/Hepbtax.png'),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        /// Structure
+                        ///
+                        Text(
+                          'STRUCTURE',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'The Hepatitis B virus is a small virus that is 20-30 nm in diameter. It consists of an outer lipid envelope and an icosahedral capsid that encloses the circular DNA. This DNA is partially double stranded . The surface of the envelope holds the surface antigen HBsAg that comes in three sizes. It is these antigens that are used in the vaccine against Hepatitis B.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        /// STRUCTURE IMAGE ///
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: Image.asset('images/HepBInside.png'),
+                          ),
+                        ),
+
+                        Spacer(flex: 3),
+
+                        ///
+                        /// INFECTION & TRANSMISSION
+                        ///
+                        Text(
+                          'INFECTION & TRANSMISSION',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Hepatitis B virus is usually transmitted through blood contact, but also has a small change of transmitting through sexual intercourse or through vertical transmission (from mother to child within the womb). Because of this, intravenous drug users, recipients of blood transfusion or dialysis are the biggest risk groups.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 4),
+
+                        ///
+                        /// DISEASES
+                        ///
+
+                        Text(
+                          'DISEASES',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Infection with Hepatitis B virus can cause Hepatitis B that can be acute or chronic in nature. Acute Hepatitis is characterised by nausea, reduced appetite, vomiting, itchiness, fever, dark urine, feeling of tiredness and yellow tinged skin. In a few cases this can lead to fulminant hepatitis, where liver failure can occur.  Symptoms usually disappear within 3 months. If the body is not able to get rid of the virus, chronic hepatitis B can occur. Similarly to hepatitis C, chronic hepatitis B causes inflammation of the liver that can eventually lead to cirrhosis (a condition where normal liver tissue gets replaced by scar tissue) and hepatocellular carcinoma, a type of liver cancer. ',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+                        Container(
+                            child: Image.asset(
+                          'images/texticon.png',
+                          height: MediaQuery.of(context).size.width * 0.15,
+                        )),
+
+                        Spacer(flex: 3),
+                        AdmobBanner(
+                          adUnitId: ams.getBannerAdId(),
+                          adSize: AdmobBannerSize.FULL_BANNER,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          ///
+          /// HERPES SYMPLEX 1
+          ///
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  //Virus Name, Family Name, Image
+                  height: MediaQuery.of(context).size.height * 0.59,
+                  color: Colors.white,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Spacer(flex: 30),
+                        Flexible(
+                          flex: 10,
+                          child: Text('Herpes simplex virus - type 1',
+                              style: TextStyle(
+                                  fontFamily: 'RobotoB',
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  decoration: TextDecoration.none)),
+                        ),
+                        Spacer(flex: 3),
+                        Flexible(
+                          flex: 10,
+                          child: Text(
+                            'Family: Herpesviridea',
+                            style: TextStyle(
+                                fontFamily: 'merriweatherLI',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none),
+                          ),
+                        ),
+                        Spacer(flex: 18),
+                        Flexible(
+                          flex: 50,
+                          child: Image.asset(
+                            'images/Hsv1.png',
+                            height: 170,
+                            width: 170,
+                          ),
+                        ),
+                        Spacer(flex: 10),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //Virus snippet info
+                  color: Colors.white,
+                  height: MediaQuery.of(context).size.height * 0.41,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Text('TRANSMISSION:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('''
+
+Sexual contact
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('DISEASES:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text(''' 
+
+Herpes simplex
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1))
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //complete info page
+                  color: Color(0xFFDDD9D3),
+                  height: MediaQuery.of(context).size.height * 2.7,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: <Widget>[
+                        Spacer(flex: 3),
+                        Container(
+                            child: Image.asset(
+                          'images/texticon.png',
+                          height: MediaQuery.of(context).size.width * 0.15,
+                        )),
+
+                        Spacer(flex: 3),
+
+                        ///
+                        ///TAXONOMY///
+                        ///
+
+                        Text(
+                          'TAXONOMY',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'The Herpes simplex virus has two variants (type 1 & type 2), that are part of the genus Simplexvirus within the Herpesviridea family. All viruses in this family produces viral infection in most humans.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 2),
+
+                        ///
+                        /// TAX IMAGE ///
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            child: Image.asset('images/Hsvtax.png'),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        /// Structure
+                        ///
+                        Text(
+                          'STRUCTURE',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'HVS is a relatively large virus (155-240 nm), consisting of a double layered lipid envelope, a icosahedral capsid that is attached to the envelope by means of a tegument (a protein layer) and a linear double stranded DNA genome. On the outside of the envelope four different proteins can be found (gB,gC,gD and gH) that are involved in attaching the virus to the host cell.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        /// STRUCTURE IMAGE ///
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            child: Image.asset('images/HPSinside.png'),
+                          ),
+                        ),
+
+                        Spacer(flex: 3),
+
+                        ///
+                        /// INFECTION & TRANSMISSION
+                        ///
+                        Text(
+                          'INFECTION & TRANSMISSION',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Transmission of the virus is caused by oral and sexual contact with an infected person who has a reactivation of the virus. Reactivation occurs periodically in the human genital tract, which usually shown no symptoms.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 4),
+
+                        ///
+                        /// DISEASES
+                        ///
+
+                        Text(
+                          'DISEASES',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Herpes simplex virus causes the viral infection Herpes simplex. Infections can be divided in Oral and Genital herpes. Oral herpes may result in small blisters on the lips and around the mouth called cold sores. Genital herpes can show minimal symptoms or form blisters in the genital region that break open and cause ulcers. Both in oral and genital herpes, symptoms usually occur periodically, where symptoms become less severe each cycle. Other rarer diseases caused by the virus are herpetic whitlow (lesions on the fingers), herpes of the eye, herpes of the brain and neonatal herpes (caused by vertical transmission from mother to new-born',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+                        Container(
+                            child: Image.asset(
+                          'images/texticon.png',
+                          height: MediaQuery.of(context).size.width * 0.15,
+                        )),
+
+                        Spacer(flex: 3),
+                        AdmobBanner(
+                          adUnitId: ams.getBannerAdId(),
+                          adSize: AdmobBannerSize.FULL_BANNER,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          ///
+          /// EPSTEIN BAR VIRUS
+          ///
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  //Virus Name, Family Name, Image
+                  height: MediaQuery.of(context).size.height * 0.59,
+                  color: Colors.white,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Spacer(flex: 30),
+                        Flexible(
+                          flex: 10,
+                          child: Text('Epstein-Barr virus',
+                              style: TextStyle(
+                                  fontFamily: 'RobotoB',
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  decoration: TextDecoration.none)),
+                        ),
+                        Spacer(flex: 3),
+                        Flexible(
+                          flex: 10,
+                          child: Text(
+                            'Family: Herpesviridea',
+                            style: TextStyle(
+                                fontFamily: 'merriweatherLI',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none),
+                          ),
+                        ),
+                        Spacer(flex: 18),
+                        Flexible(
+                          flex: 50,
+                          child: Image.asset(
+                            'images/Epstein.png',
+                            height: 170,
+                            width: 170,
+                          ),
+                        ),
+                        Spacer(flex: 10),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //Virus snippet info
+                  color: Colors.white,
+                  height: MediaQuery.of(context).size.height * 0.41,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Text('TRANSMISSION:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('''
+
+saliva,
+sexual intercourse,
+blood
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('DISEASES:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text(''' 
+
+mononucleosis
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1))
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //complete info page
+                  color: Color(0xFFDDD9D3),
+                  height: MediaQuery.of(context).size.height * 2.9,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: <Widget>[
+                        Spacer(flex: 3),
+                        Container(
+                            child: Image.asset(
+                          'images/texticon.png',
+                          height: MediaQuery.of(context).size.width * 0.15,
+                        )),
+
+                        ///
+                        ///TAXONOMY///
+                        ///
+                        Spacer(flex: 3),
+                        Text(
+                          'TAXONOMY',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Epstein-Barr virus (EBV) or formally called Human gammaherpesvirus 4, is a species in the genus Lymphocryptovirus within the family Herpesviridea. EBV is named after Michael Anthony Epstein, who discovered the virus and published on the existence of it in 1964.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 2),
+
+                        ///
+                        /// TAX IMAGE ///
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            child: Image.asset('images/EpsteinTax.png'),
+                          ),
+                        ),
+                        Spacer(flex: 2),
+
+                        ///
+                        /// Structure
+                        ///
+                        Text(
+                          'STRUCTURE',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'The Epstein-Barr virus is a double stranded DNA virus that is 120-180 nm in size. The DNA is surrounded by an icosahedral capsid that is encapsulated in a protein tegument, that is in turn encapsulated by the envelope. The envelope holds the envelope glycoproteins that are essential to infection of the host cell.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        /// STRUCTURE IMAGE ///
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: Image.asset('images/EpsteinInside.png'),
+                          ),
+                        ),
+
+                        Spacer(flex: 4),
+
+                        ///
+                        /// INFECTION & TRANSMISSION
+                        ///
+                        Text(
+                          'INFECTION & TRANSMISSION',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'EBV spreads most commonly through saliva, but can also be transmitted through blood and sexual contact. The virus stays relatively stable under moist conditions, this makes the virus able to transmit through objects such as shared toothbrushes or drinking glasses. A person is able to transmit the virus for a few weeks the first time they get infected and whenever the virus is reactivated. After a few weeks after infection the virus stays latent.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 4),
+
+                        ///
+                        /// DISEASES
+                        ///
+
+                        Text(
+                          'DISEASES',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Most people will get infected with EBV in their lifetime, but many will never show any symptoms. It is estimated that 95% of all adults between the ages of 35-40 cary the virus. The most well known disease caused by EBV is mononucleosis or more commonly called kissing disease or mono. EBV is also associated with Hodgkins lymphoma, a type of lymphoma in which cancer originates from a specific type of white blood cells called lymphocytes. The virus is found in around 40% of all Hodgkins lymphoma tumors. The role EBV plays in the disease pathogenesis is however not fully understood.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+                        Container(
+                            child: Image.asset(
+                          'images/texticon.png',
+                          height: MediaQuery.of(context).size.width * 0.15,
+                        )),
+
+                        Spacer(flex: 3),
+                        AdmobBanner(
+                          adUnitId: ams.getBannerAdId(),
+                          adSize: AdmobBannerSize.FULL_BANNER,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          ///
+          /// CYTOMEGALOVIRUS
+          ///
+
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  //Virus Name, Family Name, Image
+                  height: MediaQuery.of(context).size.height * 0.59,
+                  color: Colors.white,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Spacer(flex: 30),
+                        Flexible(
+                          flex: 10,
+                          child: Text('Human cytomegalovirus',
+                              style: TextStyle(
+                                  fontFamily: 'RobotoB',
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  decoration: TextDecoration.none)),
+                        ),
+                        Spacer(flex: 3),
+                        Flexible(
+                          flex: 10,
+                          child: Text(
+                            'Family: Herpesviridea',
+                            style: TextStyle(
+                                fontFamily: 'merriweatherLI',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none),
+                          ),
+                        ),
+                        Spacer(flex: 18),
+                        Flexible(
+                          flex: 50,
+                          child: Image.asset(
+                            'images/Cyt.png',
+                            height: 170,
+                            width: 170,
+                          ),
+                        ),
+                        Spacer(flex: 10),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //Virus snippet info
+                  color: Colors.white,
+                  height: MediaQuery.of(context).size.height * 0.41,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Text('TRANSMISSION:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('''
+
+unknown
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('DISEASES:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text(''' 
+
+gland malignancies,
+prostate cancer,
+breast cancer
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1))
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //complete info page
+                  color: Color(0xFFDDD9D3),
+                  height: MediaQuery.of(context).size.height * 2.5,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: <Widget>[
+                        Spacer(flex: 3),
+                        Container(
+                            child: Image.asset(
+                          'images/texticon.png',
+                          height: MediaQuery.of(context).size.width * 0.15,
+                        )),
+
+                        ///
+                        ///TAXONOMY///
+                        ///
+                        Spacer(flex: 3),
+                        Text(
+                          'TAXONOMY',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Cytomegalovirus is a genus of the family Herpesviridae. The genus contains 11 species of which 10 infect monkeys and one, the human cytomegalovirus (HCMV), that infects humans.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 2),
+
+                        ///
+                        /// TAX IMAGE ///
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            child: Image.asset('images/CytoTax.png'),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        /// Structure
+                        ///
+                        Text(
+                          'STRUCTURE',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'The human cytomegalovirus consists of an outer double layered lipid envelope that holds an icosahedral capsid. The capsid and envelope are held together by a tegument (a layer of proteins). The average size can range from 200-300 nm',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        /// STRUCTURE IMAGE ///
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: Image.asset('images/Cytinside.png'),
+                          ),
+                        ),
+
+                        Spacer(flex: 4),
+
+                        ///
+                        /// INFECTION & TRANSMISSION
+                        ///
+                        Text(
+                          'INFECTION & TRANSMISSION',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'The precise mode of transmission of HCMV is currently unknown but is likely transmitted through bodily fluids in general. It is most commonly transmitted through kissing and sexual intercourse.  HCMV is not highly contagious, and usually spreads in places where people have prolonged intimate contact.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 4),
+
+                        ///
+                        /// DISEASES
+                        ///
+
+                        Text(
+                          'DISEASES',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Infection with HCMV is usually asymptomatic and unnoticed in healthy people but can lead to serious illness in people with a compromised immune system such as HIV infected people, organ transplant recipients and infants. The virus remains latent within the body throughout life and can be reactivated at any time. Eventually it may lead to salivary gland malignancies, prostate cancer or breast cancer.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+                        Container(
+                            child: Image.asset(
+                          'images/texticon.png',
+                          height: MediaQuery.of(context).size.width * 0.15,
+                        )),
+
+                        Spacer(flex: 3),
+                        AdmobBanner(
+                          adUnitId: ams.getBannerAdId(),
+                          adSize: AdmobBannerSize.FULL_BANNER,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          ///
+          ///Human papillomavirus
+          ///
+
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  //Virus Name, Family Name, Image
+                  height: MediaQuery.of(context).size.height * 0.59,
+                  color: Colors.white,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Spacer(flex: 30),
+                        Flexible(
+                          flex: 10,
+                          child: Text('Human papillomavirus',
+                              style: TextStyle(
+                                  fontFamily: 'RobotoB',
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  decoration: TextDecoration.none)),
+                        ),
+                        Spacer(flex: 3),
+                        Flexible(
+                          flex: 10,
+                          child: Text(
+                            'Family: Papillomaviridea',
+                            style: TextStyle(
+                                fontFamily: 'merriweatherLI',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none),
+                          ),
+                        ),
+                        Spacer(flex: 18),
+                        Flexible(
+                          flex: 50,
+                          child: Image.asset(
+                            'images/Papilloma.png',
+                            height: 170,
+                            width: 170,
+                          ),
+                        ),
+                        Spacer(flex: 10),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //Virus snippet info
+                  color: Colors.white,
+                  height: MediaQuery.of(context).size.height * 0.41,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Text('TRANSMISSION:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('''
+
+ 
+sexual intercourse, 
+vertical
+
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('DISEASES:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text(''' 
+
+human papillomavirus infection
+genital cancers
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1))
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //complete info page
+                  color: Color(0xFFDDD9D3),
+                  height: MediaQuery.of(context).size.height * 2.5,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: <Widget>[
+                        ///
+                        ///TAXONOMY///
+                        ///
+                        Spacer(flex: 3),
+                        Container(
+                            child: Image.asset(
+                          'images/texticon.png',
+                          height: MediaQuery.of(context).size.width * 0.15,
+                        )),
+
+                        Spacer(flex: 3),
+                        Text(
+                          'TAXONOMY',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Human papillomavirus is the name of a collection of more than 170 viruses in the family of Papillomaviridea, spread over five of the 53 genera, that can infect humans. The exact phylogenetic relationship of genera and species is yet unkown.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        /// TAX IMAGE ///
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            child: Image.asset('images/Paptax.png'),
+                          ),
+                        ),
+                        Spacer(flex: 4),
+
+                        Text(
+                          'STRUCTURE',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Papillomaviruses have no envolope, are icosahedral shaped and cary double stranded DNA. Their average size is 52-55 nm in diameter.  ',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 2),
+
+                        ///
+                        ///INSIDE IMAGE
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: Image.asset('images/Papinside.png'),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        /// INFECTION & TRANSMISSION
+                        ///
+                        Text(
+                          'INFECTION & TRANSMISSION',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Transmission of human papillomavirus happens mainly through sexual intercourse but can also happen from mother to child during birth. The transmission of the virus through blood contact has recently be found to be a possibility but is by no means the most common mode of transmission.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 4),
+
+                        ///
+                        /// DISEASES
+                        ///
+
+                        Text(
+                          'DISEASES',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Human papillomavirus causes human papillomavirus infection. Up to 90% of all infections cause no symptoms and resolve within two years. In the cases where this does not happen, the infection can cause genital warts or precancerous lesions.  These lesions can eventually lead to cancer of the cervix, vulva, vagina, penis, anus, mouth, or throat. Almost all cervical cancer is caused by HPV infection. HPV infection is extremely common, nearly every individual is infected by it at some point of their lives without ever noticing any symptoms.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+                        Container(
+                            child: Image.asset(
+                          'images/texticon.png',
+                          height: MediaQuery.of(context).size.width * 0.15,
+                        )),
+                        Spacer(flex: 3),
+                        AdmobBanner(
+                          adUnitId: ams.getBannerAdId(),
+                          adSize: AdmobBannerSize.FULL_BANNER,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          ///
+          /// Coxsackievirus
+          ///
+
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  //Virus Name, Family Name, Image
+                  height: MediaQuery.of(context).size.height * 0.59,
+                  color: Colors.white,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Spacer(flex: 30),
+                        Flexible(
+                          flex: 10,
+                          child: Text('Coxsackievirus',
+                              style: TextStyle(
+                                  fontFamily: 'RobotoB',
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  decoration: TextDecoration.none)),
+                        ),
+                        Spacer(flex: 3),
+                        Flexible(
+                          flex: 10,
+                          child: Text(
+                            'Family: Picornaviridae',
+                            style: TextStyle(
+                                fontFamily: 'merriweatherLI',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none),
+                          ),
+                        ),
+                        Spacer(flex: 18),
+                        Flexible(
+                          flex: 50,
+                          child: Image.asset(
+                            'images/Cosacackie.png',
+                            height: 170,
+                            width: 170,
+                          ),
+                        ),
+                        Spacer(flex: 10),
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //Virus snippet info
+                  color: Colors.white,
+                  height: MediaQuery.of(context).size.height * 0.41,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: [
+                        Text('TRANSMISSION:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('''
+
+direct contact,
+sexual contact,
+vertical,
+fecal-oral
+''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text('DISEASES:',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 9,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1)),
+                        Text(''' 
+
+hand, foot and mouth disease''',
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontFamily: 'merriweatherL',
+                                color: Colors.black,
+                                fontSize: 10,
+                                decoration: TextDecoration.none,
+                                letterSpacing: 1))
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  //complete info page
+                  color: Color(0xFFDDD9D3),
+                  height: MediaQuery.of(context).size.height * 2.7,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(
+                      children: <Widget>[
+                        Spacer(flex: 3),
+                        Container(
+                          child: Image.asset(
+                            'images/texticon.png',
+                            height: MediaQuery.of(context).size.width * 0.15,
+                          ),
+                        ),
+
+                        ///
+                        ///TAXONOMY///
+                        ///
+                        Spacer(flex: 3),
+                        Text(
+                          'TAXONOMY',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Coxsackievirus belongs to the family of Picornaviridea, a group containing 47 genera and a total of 110 species.  The genus Enterovirus it belongs to is named after a common way of entering the body through the intestines (from the Greek word énteron, meaning intestinal). The genus also contains the well-known poliovirus. Enterovirus contains 29 species that are divided in group A and B. Group A tend to infect the skin and mucous membranes, whereas group B tend to infect the heart, pleura, pancreas, and liver',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        /// TAX IMAGE ///
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.7,
+                            child: Image.asset('images/CoxTax.png'),
+                          ),
+                        ),
+
+                        Spacer(flex: 3),
+
+                        ///
+                        /// Structure
+                        ///
+                        Text(
+                          'STRUCTURE',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Coxsackievirus is an icosahedral single strand RNA virus that is about 20-30 nm in diameter. The capsid is built out of three different glycoproteins (VP1, VP2 & VP3) and an inside layer of protein (VP4).',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+
+                        ///
+                        /// STRUCTURE IMAGE ///
+                        ///
+                        InteractiveViewer(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * 0.8,
+                            child: Image.asset('images/CoxInside.png'),
+                          ),
+                        ),
+
+                        Spacer(flex: 3),
+
+                        ///
+                        /// INFECTION & TRANSMISSION
+                        ///
+                        Text(
+                          'INFECTION & TRANSMISSION',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Coxsackie A viruses are highly contagious and can be transmitted in many ways; by direct transmission (coughing or sneezing into any mucous membrane), faecal-orally (when faecal of an infected individual ends up in the mouth of another person), via surface contact, via airborne transmission (inhalation of respiratory droplets) or vertical transmission (from infected mother to unborn child). Adults are less susceptible to infection than infants, but it is possible.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 4),
+
+                        ///
+                        /// DISEASES
+                        ///
+
+                        Text(
+                          'DISEASES',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 12,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1),
+                        ),
+                        Spacer(flex: 2),
+                        Container(
+                          width: MediaQuery.of(context).size.width * 0.7,
+                          child: Text(
+                            'Coxsackievirus can cause ‘hand, foot and mouth disease’, in infants. Hand foot and mouth disease typically begins with a fever, followed by spots that appear around the hands, feet or mouth. These spots sometimes form blisters. This rash usually resolves on its own in about a week. Most cases of ‘hand, foot and mouth disease’ are harmless, but complications such as meningitis and paralysis may occur.',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 9,
+                              decoration: TextDecoration.none,
+                              letterSpacing: 1.2,
+                              height: 2,
+                            ),
+                          ),
+                        ),
+                        Spacer(flex: 3),
+                        Container(
+                          child: Image.asset(
+                            'images/texticon.png',
+                            height: MediaQuery.of(context).size.width * 0.15,
+                          ),
+                        ),
+                        Spacer(flex: 3),
+                        AdmobBanner(
+                          adUnitId: ams.getBannerAdId(),
+                          adSize: AdmobBannerSize.FULL_BANNER,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          ///
+          ///SIZECOMPARISON PAGE
+          ///
+          SingleChildScrollView(
+            child: Column(
+              children: <Widget>[
+                Container(
+                  //Virus Name, Family Name, Image
+                  height: MediaQuery.of(context).size.height * 3,
+                  color: Colors.white,
+                  alignment: Alignment.center,
+                  child: Container(
+                    child: Column(children: [
+                      Spacer(flex: 15),
+                      Text('SIZE COMPARISON',
+                          style: TextStyle(
+                              fontFamily: 'merriweatherL',
+                              color: Colors.black,
+                              fontSize: 20,
+                              decoration: TextDecoration.none)),
+                      Container(
+                        width: 185,
+                        child: Divider(
+                          color: Colors.black,
+                        ),
+                      ),
+                      Spacer(flex: 15),
+                      Container(
+                          width: MediaQuery.of(context).size.width * 0.3,
+                          child: Image.asset('images/sizecomparison1.png')),
+                      Spacer(flex: 3),
+                      Text(
+                        'Coxsackievirus; 20–30 nm',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontFamily: 'merriweatherL',
+                            color: Colors.black,
+                            fontSize: 10,
+                            decoration: TextDecoration.none,
+                            letterSpacing: 1),
+                      ),
+                      Spacer(flex: 15),
+                      Container(
+                          width: MediaQuery.of(context).size.width * 0.3,
+                          child: Image.asset('images/sizecomparison2.png')),
+                      Spacer(flex: 3),
+                      Text(
+                        'Hepatitus B virus; 42–47 nm',
+                        style: TextStyle(
+                            fontFamily: 'merriweatherL',
+                            color: Colors.black,
+                            fontSize: 10,
+                            decoration: TextDecoration.none,
+                            letterSpacing: 1),
+                      ),
+                      Spacer(flex: 15),
+                      Container(
+                          width: MediaQuery.of(context).size.width * 0.27,
+                          child: Image.asset('images/sizecomparison3.png')),
+                      Spacer(flex: 3),
+                      Text(
+                        'Human Papillomavirus; 52–55 nm',
+                        style: TextStyle(
+                            fontFamily: 'merriweatherL',
+                            color: Colors.black,
+                            fontSize: 10,
+                            decoration: TextDecoration.none,
+                            letterSpacing: 1),
+                      ),
+                      Spacer(flex: 15),
+                      Container(
+                          width: MediaQuery.of(context).size.width * 0.25,
+                          child: Image.asset('images/sizecomparison4.png')),
+                      Spacer(flex: 3),
+                      Text(
+                        'Hepatitus C virus; 55–65 nm',
+                        style: TextStyle(
+                            fontFamily: 'merriweatherL',
+                            color: Colors.black,
+                            fontSize: 10,
+                            decoration: TextDecoration.none,
+                            letterSpacing: 1),
+                      ),
+                      Spacer(flex: 15),
+                      Container(
+                          width: MediaQuery.of(context).size.width * 0.33,
+                          child: Image.asset('images/sizecomparison62.png')),
+                      Spacer(flex: 3),
+                      Text(
+                        'Adenovirus; 65-80 nm',
+                        style: TextStyle(
+                            fontFamily: 'merriweatherL',
+                            color: Colors.black,
+                            fontSize: 10,
+                            decoration: TextDecoration.none,
+                            letterSpacing: 1),
+                      ),
+                      Spacer(flex: 15),
+                      Container(
+                          width: MediaQuery.of(context).size.width * 0.33,
+                          child:
+                              Image.asset('images/sizecomparisonEpstein.png')),
+                      Spacer(flex: 3),
+                      Text(
+                        'Epstein-Barr virus 120-180 nm',
+                        style: TextStyle(
+                            fontFamily: 'merriweatherL',
+                            color: Colors.black,
+                            fontSize: 10,
+                            decoration: TextDecoration.none,
+                            letterSpacing: 1),
+                      ),
+                      Spacer(flex: 15),
+                      Container(
+                          width: MediaQuery.of(context).size.width * 0.36,
+                          child: Image.asset('images/sizecomparisonCyt.png')),
+                      Spacer(flex: 3),
+                      Text(
+                        'Cytomegalovirus; 150-200  nm',
+                        style: TextStyle(
+                            fontFamily: 'merriweatherL',
+                            color: Colors.black,
+                            fontSize: 10,
+                            decoration: TextDecoration.none,
+                            letterSpacing: 1),
+                      ),
+                      Spacer(flex: 15),
+                      Container(
+                          width: MediaQuery.of(context).size.width * 0.40,
+                          child: Image.asset('images/sizecomparisonHPV.png')),
+                      Spacer(flex: 3),
+                      Text(
+                        'Herpes simplexvirus -type 1; 155-240  nm',
+                        style: TextStyle(
+                            fontFamily: 'merriweatherL',
+                            color: Colors.black,
+                            fontSize: 10,
+                            decoration: TextDecoration.none,
+                            letterSpacing: 1),
+                      ),
+                      Spacer(flex: 10),
+                    ]),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          ////
+          ////
+          ////
+          ////
+          ////
+          ///
+        ],
+      ),
+    );
+  }
+}
